@@ -1,0 +1,7 @@
+.frontend/DS_Store
+.frontend/env
+/node_modules/
+
+# React Router
+/frontend/.react-router/
+/frontend/build/

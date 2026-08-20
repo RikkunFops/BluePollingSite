@@ -1,0 +1,156 @@
+.ListContainer {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.BattleHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    cursor: pointer;
+    background: #2a0a4a;
+    color: #fff;
+    font-weight: 600;
+    user-select: none;
+    width: 100%;
+    border-radius: 8px;
+    flex-direction: column;
+}
+.BattleBody {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    width: 100%;
+}
+
+
+.BattleContainer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 16px;
+    outline: 2px solid #740fd1;
+    align-self: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 8px;
+}
+
+.BattleContainer.collapsed .BattleBody {
+    display: none;
+}
+
+.BattleBanner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.Winner {
+    color: lightsteelblue;
+    outline-color: lightsteelblue;
+    outline-width: 2px;
+    border-radius: 8px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 72px;
+}
+.Winner-icon {
+    display: grid;
+    justify-content: center;
+    max-width: 180px;
+}
+.Loser {
+    outline-width: 2px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 56px;
+}
+.Loser-icon {
+    display: grid;
+    justify-content: center;
+    max-width: 120px;
+}
+
+.RoundContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 8px;
+    border: 1px solid #740fd1;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.RoundHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    cursor: pointer;
+    background: #2a0a4a;
+    color: #fff;
+    font-weight: 600;
+    user-select: none;
+}
+
+.RoundBody {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+}
+
+.RoundContainer.collapsed .RoundBody {
+    display: none;
+}
+
+.TurnContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 4px 0;
+    border: 1px solid #4a1d80;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #222;
+}
+
+.TurnHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: #3a1560;
+    color: #eee;
+    font-size: 0.9em;
+    user-select: none;
+}
+
+.TurnBody {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    color: #ccc;
+    font-size: 0.85em;
+}
+
+.TurnContainer.collapsed .TurnBody {
+    display: none;
+}
