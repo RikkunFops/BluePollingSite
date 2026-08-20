@@ -654,7 +654,7 @@ export default function Battling() {
                                 </option>
                             ))}
                         </select>
-                        <img className="battleActorIcon" id="actor1-icon" src={actor1?.iconurl ? `http://localhost:3000${actor1.iconurl}` : "http://localhost:3000/uploads/placeholder.png"} />
+                        <img className="battleActorIcon" id="actor1-icon" src={actor1?.iconurl || "/uploads/placeholder.png"} />
                         <h2 className="battleActorName" id="actor1-name">{capitalise(actor1.name) || "Select a hero"}</h2>
                         <p className="battleActorTeam" id="actor1-team">{capitalise(actor1.team) || "Hero"}</p>
                         <table className="battleActorTable" id="actor1-table">
@@ -715,7 +715,7 @@ export default function Battling() {
                                 </option>
                             ))}
                         </select>
-                        <img className="battleActorIcon" id="actor2-icon" src={actor2?.iconurl ? `http://localhost:3000${actor2.iconurl}` : "http://localhost:3000/uploads/placeholder.png"} />
+                        <img className="battleActorIcon" id="actor2-icon" src={actor2?.iconurl || "/uploads/placeholder.png"} />
                         <h2 className="battleActorName" id="actor2-name">{capitalise(actor2.name) || "Select a villain"}</h2>
                         <p className="battleActorTeam" id="actor2-team">{capitalise(actor2.team) || "Villain"}</p>
                         <table className="battleActorTable" id="actor2-table">

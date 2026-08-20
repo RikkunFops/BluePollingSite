@@ -14,7 +14,7 @@ export function BattleView({
   const [collapsed, setCollapsed] = useState(true);
 
   const getImageSrc = (iconUrl: string | null) =>
-    iconUrl ? `http://localhost:3000${iconUrl}` : "http://localhost:3000/uploads/placeholder.png";
+    iconUrl || "/uploads/placeholder.png";
 
   return (
     <div className={`BattleContainer${collapsed ? " collapsed" : ""}`}>

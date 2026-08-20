@@ -1,8 +1,6 @@
 services:
   backend:
     build: ./backend
-    ports:
-      - "5000:5000"
     volumes:
       - ./backend:/app
       - /app/node_modules
@@ -16,8 +14,6 @@ services:
     build:
       context: ./frontend
       target: development
-    ports:
-      - "3000:3000"
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -25,6 +21,37 @@ services:
       - backend
     networks:
       - app-network
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN:blueboye.com}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./letsencrypt:/etc/letsencrypt:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - app-network
+
+  certbot:
+    image: certbot/certbot:latest
+    profiles:
+      - certbot
+    ports:
+      - "80:80"
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+
+volumes:
+  caddy_data:
+  caddy_config:
 
 networks:
   app-network:

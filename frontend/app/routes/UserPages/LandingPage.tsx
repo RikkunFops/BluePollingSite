@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
+import type { Route } from "./+types/LandingPage";
 import type { Battle, BattleResponse} from "../types/battle";
 import { type Character, type CharacterResponse } from "../types/character";
 import { BattleView } from "./BattleView";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "TROEVL Tournament" },
+    { name: "Tournament results viewing", content: "View the results..." },
+  ];
+}
 export default function LandingPage() {
   const [characters, setCharacters] = useState<Record<string, Character>>({});
   const [battles, setBattles] = useState<Battle[]>([]);

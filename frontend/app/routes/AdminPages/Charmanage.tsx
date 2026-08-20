@@ -254,7 +254,7 @@ export default function Charmanage() {
             />
           ) : character.iconurl ? (
             <img
-              src={`http://localhost:3000${character.iconurl}`}
+              src={character.iconurl}
               alt={`${character.name} portrait`}
               style={{ width: "200px", borderRadius: "8px" }}
             />
@@ -392,7 +392,7 @@ export default function Charmanage() {
                 {characters.map((chars) => (
                   <div className="gridview-sidebar" key={chars.name}>
                     <img 
-                      src={`http://localhost:3000${chars.iconurl}`} alt={chars.name} 
+                      src={chars.iconurl} alt={chars.name} 
                       className="char-icon"/>
                     <div className="character-card-info">
                       <p className="character-card-name">{chars.name}</p>

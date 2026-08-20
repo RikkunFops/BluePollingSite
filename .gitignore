@@ -5,3 +5,10 @@
 # React Router
 /frontend/.react-router/
 /frontend/build/
+
+/backend/counter.db
+/backend/src/battles/
+/backend/src/uploads/
+
+letsencrypt/
+.env
