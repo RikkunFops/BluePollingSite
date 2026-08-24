@@ -23,7 +23,8 @@ export class Poison extends BaseStatus {
     doApply(actor: Character): Character {
         const finChar = actor;
         if (!finChar.statuses[this.baseName] && getRandomInt(1,100) <= 33) {
-            finChar.statuses[this.baseName] = this
+            const status = new (this.constructor as new () => typeof this)();
+            finChar.statuses[this.baseName] = status;
         }
         return finChar
     }

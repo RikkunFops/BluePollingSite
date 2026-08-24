@@ -32,8 +32,9 @@ export class Stuck extends BaseStatus {
         }
         else {
             if (getRandomInt(1,100) <= 33) {
-                this.stacks = 1
-                finChar.statuses[this.name] = this
+                const status = new (this.constructor as new () => typeof this)();
+                status.stacks = 1;
+                finChar.statuses[this.name] = status;
             }
         }
         return finChar

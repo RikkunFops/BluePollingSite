@@ -26,8 +26,9 @@ export class Aroused extends BaseStatus {
             finChar.statuses[this.baseName].value += 1;
         }
         else if (getRandomInt(1, 100) <= 50) {
-            this.value = 1;
-            finChar.statuses[this.baseName] = this;
+            const status = new (this.constructor as new () => typeof this)();
+            status.value = 1;
+            finChar.statuses[this.baseName] = status;
         }
 
         return finChar;

@@ -23,7 +23,8 @@ export class Enraged extends BaseStatus {
     doApply(actor: Character): Character {
         const finChar = actor;
         if (!finChar.statuses[this.name] && getRandomInt(1,100) <= 33) {
-            finChar.statuses[this.name] = this
+            const status = new (this.constructor as new () => typeof this)();
+            finChar.statuses[this.name] = status;
         }
         return finChar
     }

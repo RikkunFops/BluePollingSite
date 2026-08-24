@@ -9,11 +9,27 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const app = express();
 
+const UPLOAD_DIR = path.join(__dirname, "uploads");
+const BATTLE_DIR = path.join(__dirname, "battles");
+const STATUS_DIR = path.join(__dirname, "statuses");
+
+async function ensureUploadDirectories() {
+  await Promise.all([
+    fs.mkdir(UPLOAD_DIR, { recursive: true }),
+    fs.mkdir(BATTLE_DIR, { recursive: true }),
+    fs.mkdir(STATUS_DIR, { recursive: true })
+  ]);
+}
+
+ensureUploadDirectories().catch((err) => {
+  console.error("Unable to create upload directories:", err);
+  process.exit(1);
+});
 
 app.use(express.json());
 app.use(express.static("public"));
-app.use('/uploads', express.static(path.join(__dirname, "uploads")));
-app.use('/battles', express.static(path.join(__dirname, "battles")));
+app.use('/uploads', express.static(UPLOAD_DIR));
+app.use('/battles', express.static(BATTLE_DIR));
 
 
 app.use(cookieParser());
@@ -71,7 +87,7 @@ HeroVillainDB.serialize(() => {
 
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => {
-    cb(null, path.join(__dirname, "uploads"));
+    cb(null, UPLOAD_DIR);
   },
   filename: (_req, file, cb) => {
     const ext = path.extname(file.originalname); 
@@ -82,22 +98,23 @@ const storage = multer.diskStorage({
 
 const battleStorage = multer.diskStorage({
   destination: (_req, _file, cb) => {
-    cb(null, path.join(__dirname, "battles"));
+    cb(null, BATTLE_DIR);
   },
   filename: (_req, file, cb) => {
     const uniqueName = `${Date.now()}-${Math.round(Math.random()*1e9)}.json`;
-    cb(null,uniqueName);
+    cb(null, uniqueName);
   }
-})
+});
 
 const statusStorage = multer.diskStorage({
   destination: (_req, _file, cb) => {
-    cb(null, path.join(__dirname, "statuses"));
+    cb(null, STATUS_DIR);
   },
   filename: (_req, file, cb) => {
     const uniqueName = `${Date.now()}-${Math.round(Math.random()*1e9)}.json`;
+    cb(null, uniqueName);
   }
-})
+});
 
 const battleUpload = multer({
   storage: battleStorage,

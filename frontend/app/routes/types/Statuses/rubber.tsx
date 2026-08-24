@@ -29,8 +29,9 @@ export class Rubber extends BaseStatus {
         }
         else {
             if (getRandomInt(1,100) <= 50) {
-                this.stacks = 1
-                finChar.statuses[this.baseName] = this
+                const status = new (this.constructor as new () => typeof this)();
+                status.stacks = 1;
+                finChar.statuses[this.baseName] = status;
             }
         }
         return finChar
